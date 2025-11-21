@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Dog Matcher</title>
+      <link rel="stylesheet" href="styles.css">
+      <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 20px auto; }
+        label { display: block; margin-top: 10px; }
+        select { width: 100%; padding: 5px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 8px 16px; }
+        .card { border: 1px solid #ccc; padding: 10px; margin-top: 10px; border-radius: 4px; }
+        .score { font-weight: bold; }
+      </style>
+    </head>
+    <body>
+      <h1>Match de razas de perros 🐶</h1>
+      <form id="perfilForm">
+        <label>
+          Tiempo libre diario
+          <select name="tiempoLibre" required>
+            <option value="poco">Poco (0–1 h)</option>
+            <option value="medio">Medio (1–3 h)</option>
+            <option value="mucho">Mucho (3+ h)</option>
+          </select>
+        </label>
+
+        <label>
+          Nivel de actividad física
+          <select name="actividad" required>
+            <option value="sedentario">Sedentario</option>
+            <option value="moderado">Moderado</option>
+            <option value="alto">Alto</option>
+          </select>
+        </label>
+
+        <label>
+          Tolerancia al ruido
+          <select name="ruido" required>
+            <option value="baja">Baja</option>
+            <option value="media">Media</option>
+            <option value="alta">Alta</option>
+          </select>
+        </label>
+
+        <label>
+          Tamaño de vivienda
+          <select name="vivienda" required>
+            <option value="departamento_chico">Departamento chico</option>
+            <option value="departamento_grande">Departamento grande</option>
+            <option value="casa_con_patio">Casa con patio</option>
+          </select>
+        </label>
+
+        <label>
+          Experiencia con perros
+          <select name="experiencia" required>
+            <option value="principiante">Principiante</option>
+            <option value="intermedio">Intermedio</option>
+            <option value="avanzado">Avanzado</option>
+          </select>
+        </label>
+
+        <label>
+          Cariño / contacto físico
+          <select name="carino" required>
+            <option value="bajo">Bajo</option>
+            <option value="medio">Medio</option>
+            <option value="alto">Alto</option>
+          </select>
+        </label>
+
+        <button type="submit">Buscar razas compatibles</button>
+      </form>
+
+      <h2>Resultados</h2>
+      <div id="resultados"></div>
+      <script src="app.js" defer></script>
+    </body>
+    </html>
