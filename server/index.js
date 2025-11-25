@@ -16,7 +16,7 @@ const DOG_API_KEY = process.env.DOG_API_KEY;
 app.use(cors());
 app.use(express.json());
 
-// ---------- Helpers ----------
+
 
 function parseTemperament(temperament) {
     if (!temperament) return [];
@@ -106,7 +106,7 @@ function scoreBreedForUser(breed, userProfile) {
 app.use(express.static(path.join(__dirname, '..', 'public')));
    
 
-// Tiempo libre
+
     if (userProfile.tiempoLibre === 'poco') {
         if (energy === 'baja') score += 3;
         if (energy === 'media') score += 1;
@@ -118,11 +118,11 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
         if (energy === 'alta') score += 3;
     }
 
-    // Actividad
+ 
     if (userProfile.actividad === 'sedentario' && energy === 'alta') score -= 2;
     if (userProfile.actividad === 'alto' && energy === 'alta') score += 2;
 
-    // Vivienda
+   
     if (userProfile.vivienda === 'departamento_chico') {
         if (suitableForSmallApartment(breed)) score += 3;
         else score -= 2;
@@ -133,7 +133,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
         if (energy === 'alta') score += 1;
     }
 
-    // Experiencia
+  
     if (userProfile.experiencia === 'principiante') {
         if (difficult) score -= 3;
         else score += 1;
@@ -141,19 +141,17 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
         if (difficult) score += 1;
     }
 
-    // Cariño
+   
     if (userProfile.carino === 'alto' && affectionate) score += 3;
     if (userProfile.carino === 'bajo' && affectionate) score -= 1;
 
-    // Ruido
+
     if (userProfile.ruido === 'baja' && barkiness === 'alto') score -= 3;
     if (userProfile.ruido === 'media' && barkiness === 'alto') score -= 1;
 
     return score;
 }
 
-
-// ---------- API: POST /match ----------
 
 app.post('/match', async (req, res) => {
   const { tiempoLibre, actividad, ruido, vivienda, experiencia, carino } = req.body || {};

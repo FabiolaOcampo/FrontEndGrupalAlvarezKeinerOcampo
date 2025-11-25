@@ -9,25 +9,20 @@ form.addEventListener('submit', async (e) => {
   resultadosDiv.innerHTML = '<p>Cargando resultados...</p>';
   resultCount.textContent = 'Buscando...';
 
-  // Tomamos los datos del formulario
   const preferencias = Object.fromEntries(new FormData(form).entries());
 
   try {
-    // 1. Traer lista de razas
     const resRazas = await fetch("https://dog.ceo/api/breeds/list/all");
     const dataRazas = await resRazas.json();
 
     const razas = Object.keys(dataRazas.message);
 
-    // 2. Simular “match” calculando un score básico según preferencias
     const resultados = [];
 
     for (const raza of razas) {
-      // 3. Traer 1 foto por raza
       const resFoto = await fetch(`https://dog.ceo/api/breed/${raza}/images/random`);
       const dataFoto = await resFoto.json();
 
-      // Pequeño score inventado
       const score =
         (preferencias.tiempoLibre === "mucho" ? 10 : 5) +
         (preferencias.actividad === "alto" ? 10 : 5) +
@@ -40,10 +35,8 @@ form.addEventListener('submit', async (e) => {
       });
     }
 
-    // Ordenamos mayor score → menor
     resultados.sort((a, b) => b.score - a.score);
 
-    // Mostrar en pantalla
     resultCount.textContent = resultados.length + " resultados";
     resultadosDiv.innerHTML = "";
 
