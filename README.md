@@ -42,7 +42,7 @@ The Dog API (https://thedogapi.com/
   - Ordena por puntaje.
   - Diseño responsive y visual.
 
-  ## Integrantes del Grupo
+## Integrantes del Grupo
 - ALVAREZ, JOEL 
 - KEINER, ARIANA 
 - OCAMPO, FABIOLA ELIANA
